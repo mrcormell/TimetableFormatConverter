@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B46318CD2AC1AF76008288CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46318CC2AC1AF76008288CB /* main.swift */; };
+		B46318D52AC1B118008288CB /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = B46318D42AC1B118008288CB /* CoreXLSX */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		B46318C92AC1AF76008288CB /* TimetableFormatConverter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TimetableFormatConverter; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46318CC2AC1AF76008288CB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMBFormatTrial.xlsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46318D52AC1B118008288CB /* CoreXLSX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +60,7 @@
 		B46318CB2AC1AF76008288CB /* TimetableFormatConverter */ = {
 			isa = PBXGroup;
 			children = (
+				B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */,
 				B46318CC2AC1AF76008288CB /* main.swift */,
 			);
 			path = TimetableFormatConverter;
@@ -78,6 +82,9 @@
 			dependencies = (
 			);
 			name = TimetableFormatConverter;
+			packageProductDependencies = (
+				B46318D42AC1B118008288CB /* CoreXLSX */,
+			);
 			productName = TimetableFormatConverter;
 			productReference = B46318C92AC1AF76008288CB /* TimetableFormatConverter */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +113,9 @@
 				Base,
 			);
 			mainGroup = B46318C02AC1AF76008288CB;
+			packageReferences = (
+				B46318D32AC1B118008288CB /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+			);
 			productRefGroup = B46318CA2AC1AF76008288CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,6 +294,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B46318D32AC1B118008288CB /* XCRemoteSwiftPackageReference "CoreXLSX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/CoreXLSX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B46318D42AC1B118008288CB /* CoreXLSX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B46318D32AC1B118008288CB /* XCRemoteSwiftPackageReference "CoreXLSX" */;
+			productName = CoreXLSX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B46318C12AC1AF76008288CB /* Project object */;
 }
