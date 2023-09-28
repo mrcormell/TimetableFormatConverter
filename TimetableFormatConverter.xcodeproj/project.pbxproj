@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B46318CD2AC1AF76008288CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46318CC2AC1AF76008288CB /* main.swift */; };
 		B46318D52AC1B118008288CB /* CoreXLSX in Frameworks */ = {isa = PBXBuildFile; productRef = B46318D42AC1B118008288CB /* CoreXLSX */; };
+		B46318DA2AC47A0D008288CB /* TimetabledSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46318D92AC47A0D008288CB /* TimetabledSchool.swift */; };
+		B46318DD2AC56A2D008288CB /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46318DC2AC56A2D008288CB /* StringProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		B46318C92AC1AF76008288CB /* TimetableFormatConverter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TimetableFormatConverter; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46318CC2AC1AF76008288CB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMBFormatTrial.xlsx; sourceTree = "<group>"; };
+		B46318D92AC47A0D008288CB /* TimetabledSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetabledSchool.swift; sourceTree = "<group>"; };
+		B46318DC2AC56A2D008288CB /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +64,20 @@
 		B46318CB2AC1AF76008288CB /* TimetableFormatConverter */ = {
 			isa = PBXGroup;
 			children = (
+				B46318DB2AC56A1E008288CB /* Extensions */,
 				B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */,
 				B46318CC2AC1AF76008288CB /* main.swift */,
+				B46318D92AC47A0D008288CB /* TimetabledSchool.swift */,
 			);
 			path = TimetableFormatConverter;
+			sourceTree = "<group>";
+		};
+		B46318DB2AC56A1E008288CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B46318DC2AC56A2D008288CB /* StringProtocol.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46318DA2AC47A0D008288CB /* TimetabledSchool.swift in Sources */,
 				B46318CD2AC1AF76008288CB /* main.swift in Sources */,
+				B46318DD2AC56A2D008288CB /* StringProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
