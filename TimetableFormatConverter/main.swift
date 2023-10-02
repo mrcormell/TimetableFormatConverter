@@ -116,6 +116,18 @@ func roomToEnumName(room: String) -> String {
         return "\(room.suffix(room.count-2))7"
     } else if room.hasPrefix("8") {
         return "\(room.suffix(room.count-2))8"
+    } else if room.hasPrefix("9") {
+        return "\(room.suffix(room.count-2))9"
+    } else if room.hasPrefix("10") {
+        return "\(room.suffix(room.count-2))10"
+    } else if room.hasPrefix("11") {
+        return "\(room.suffix(room.count-2))11"
+    } else if room.hasPrefix("12") {
+        return "\(room.suffix(room.count-2))12"
+    } else if room.hasPrefix("13") {
+        return "\(room.suffix(room.count-2))13"
+    } else if room.hasPrefix("14") {
+        return "\(room.suffix(room.count-2))14"
     } else {
         let stringWithoutWhitespace = room.filter { !$0.isWhitespace }
         return stringWithoutWhitespace
@@ -187,8 +199,8 @@ func writeToFile(timetable: [TimetabledSchool], filepath: String) {
     }
 }
 
-let pathToSourceXLSX = "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/Classics-Divisions-M23.xlsx"
-let outputFilename = "/Users/d.cormell/Desktop/ClassicsTimetable2023.txt"
+let pathToSourceXLSX = "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/Divinity-Divisions-M23.xlsx"
+let outputFilename = "/Users/d.cormell/Desktop/DivinityTimetable2023.txt"
 
 guard let xlsx = XLSXFile(filepath: pathToSourceXLSX) else {
     fatalError("XLSX file is corrupted or does not exist")
