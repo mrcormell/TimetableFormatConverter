@@ -63,21 +63,21 @@ func transformSchoolCodeToSchoolName(code: String) -> String {
     case "z":
         return "Saturday1st"
     case "a'":
-        return "Monday1st"
+        return "Monday4th"
     case "b'":
-        return "Monday1st"
+        return "Friday1st"
     case "c'":
-        return "Monday1st"
+        return "Tuesday5th"
     case "d'":
-        return "Monday1st"
+        return "Wednesday6th"
     case "e'":
-        return "Monday1st"
+        return "Friday2nd"
     case "f'":
-        return "Monday1st"
+        return "Friday3rd"
     case "g'":
-        return "Monday1st"
+        return "Saturday4th"
     case "h'":
-        return "Monday1st"
+        return "Tuesday4th"
     case "i'":
         return "Monday1st"
     default:
@@ -135,8 +135,10 @@ func transformRowToTimetabledSchools(row: Row, sharedStrings: SharedStrings, tea
             hours = rowCell.stringValue(sharedStrings) ?? ""
         } else if rowCell.reference.column.value == "F" {
             initials = rowCell.stringValue(sharedStrings) ?? ""
+            initials = initials.trimmingCharacters(in: .whitespacesAndNewlines)
         } else if rowCell.reference.column.value == "G" {
             room = rowCell.stringValue(sharedStrings) ?? ""
+            room = room.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
     
@@ -165,14 +167,15 @@ func transformRowToTeacherRoom(row: Row, sharedStrings: SharedStrings) -> (teach
             teacher = rowCell.stringValue(sharedStrings) ?? ""
         } else if rowCell.reference.column.value == "F" {
             room = rowCell.stringValue(sharedStrings) ?? ""
+            room = room.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
     
     return (teacher, room)
 }
 
-func writeToFile(timetable: [TimetabledSchool]) {
-    let path = URL(filePath: "/Users/d.cormell/Desktop/timetable.txt")
+func writeToFile(timetable: [TimetabledSchool], filepath: String) {
+    let path = URL(filePath: filepath)
     var stringToWrite = ""
     do {
         for school in timetable {
@@ -184,9 +187,10 @@ func writeToFile(timetable: [TimetabledSchool]) {
     }
 }
 
-let hoursToSchools = ["a":"Monday1st"]
+let pathToSourceXLSX = "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/Classics-Divisions-M23.xlsx"
+let outputFilename = "/Users/d.cormell/Desktop/ClassicsTimetable2023.txt"
 
-guard let xlsx = XLSXFile(filepath: "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/JMBFormatTrial.xlsx") else {
+guard let xlsx = XLSXFile(filepath: pathToSourceXLSX) else {
     fatalError("XLSX file is corrupted or does not exist")
 }
 
@@ -215,7 +219,7 @@ for wbk in try xlsx.parseWorkbooks() {
                   
               }
               print(timetabledSchools)
-              writeToFile(timetable: timetabledSchools)
+              writeToFile(timetable: timetabledSchools, filepath: outputFilename)
           }
         
     }
