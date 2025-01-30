@@ -26,11 +26,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B42007B02C9DCDCF004486DA /* Classics_M24.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Classics_M24.xlsx; sourceTree = "<group>"; };
+		B45FEA5E2D4B864B002339B4 /* Econ_L25.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Econ_L25.xlsx; sourceTree = "<group>"; };
 		B46318C92AC1AF76008288CB /* TimetableFormatConverter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TimetableFormatConverter; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46318CC2AC1AF76008288CB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMBFormatTrial.xlsx; sourceTree = "<group>"; };
 		B46318D92AC47A0D008288CB /* TimetabledSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetabledSchool.swift; sourceTree = "<group>"; };
 		B46318DC2AC56A2D008288CB /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		B4FE54612C909C2C000033C3 /* CompSci_M24.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = CompSci_M24.xlsx; sourceTree = "<group>"; };
+		B4FE54622C93343A000033C3 /* Divinity_M24.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Divinity_M24.xlsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		B46318CB2AC1AF76008288CB /* TimetableFormatConverter */ = {
 			isa = PBXGroup;
 			children = (
+				B4FE54602C909BB7000033C3 /* TimetableData */,
 				B46318DB2AC56A1E008288CB /* Extensions */,
 				B46318D62AC1B30B008288CB /* JMBFormatTrial.xlsx */,
 				B46318CC2AC1AF76008288CB /* main.swift */,
@@ -78,6 +83,17 @@
 				B46318DC2AC56A2D008288CB /* StringProtocol.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B4FE54602C909BB7000033C3 /* TimetableData */ = {
+			isa = PBXGroup;
+			children = (
+				B42007B02C9DCDCF004486DA /* Classics_M24.xlsx */,
+				B4FE54622C93343A000033C3 /* Divinity_M24.xlsx */,
+				B4FE54612C909C2C000033C3 /* CompSci_M24.xlsx */,
+				B45FEA5E2D4B864B002339B4 /* Econ_L25.xlsx */,
+			);
+			path = TimetableData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 599QPW35GD;
+				DEVELOPMENT_TEAM = L3SD6D89SC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -281,7 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 599QPW35GD;
+				DEVELOPMENT_TEAM = L3SD6D89SC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

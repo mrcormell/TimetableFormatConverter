@@ -9,6 +9,7 @@ import Foundation
 import CoreXLSX
 
 func transformSchoolCodeToSchoolName(code: String) -> String {
+    let code = code.lowercased()
     switch code {
     case "a":
         return "Wednesday5th"
@@ -61,7 +62,7 @@ func transformSchoolCodeToSchoolName(code: String) -> String {
     case "y":
         return "Thursday3rd"
     case "z":
-        return "Saturday1st"
+        return "Saturday4th"
     case "a'":
         return "Monday4th"
     case "b'":
@@ -75,7 +76,7 @@ func transformSchoolCodeToSchoolName(code: String) -> String {
     case "f'":
         return "Friday3rd"
     case "g'":
-        return "Saturday4th"
+        return "Saturday1st"
     case "h'":
         return "Tuesday4th"
     case "i'":
@@ -100,7 +101,17 @@ func hoursToArrayOfHours(hours: String) -> [String] {
 }
 
 func roomToEnumName(room: String) -> String {
-    if room.hasPrefix("1") {
+    if room.hasPrefix("10") {
+        return "\(room.suffix(room.count-3))10"
+    } else if room.hasPrefix("11") {
+        return "\(room.suffix(room.count-3))11"
+    } else if room.hasPrefix("12") {
+        return "\(room.suffix(room.count-3))12"
+    } else if room.hasPrefix("13") {
+        return "\(room.suffix(room.count-3))13"
+    } else if room.hasPrefix("14") {
+        return "\(room.suffix(room.count-3))14"
+    } else if room.hasPrefix("1") {
         return "\(room.suffix(room.count-2))1"
     } else if room.hasPrefix("2") {
         return "\(room.suffix(room.count-2))2"
@@ -118,16 +129,7 @@ func roomToEnumName(room: String) -> String {
         return "\(room.suffix(room.count-2))8"
     } else if room.hasPrefix("9") {
         return "\(room.suffix(room.count-2))9"
-    } else if room.hasPrefix("10") {
-        return "\(room.suffix(room.count-2))10"
-    } else if room.hasPrefix("11") {
-        return "\(room.suffix(room.count-2))11"
-    } else if room.hasPrefix("12") {
-        return "\(room.suffix(room.count-2))12"
-    } else if room.hasPrefix("13") {
-        return "\(room.suffix(room.count-2))13"
-    } else if room.hasPrefix("14") {
-        return "\(room.suffix(room.count-2))14"
+
     } else {
         let stringWithoutWhitespace = room.filter { !$0.isWhitespace }
         return stringWithoutWhitespace
@@ -141,14 +143,14 @@ func transformRowToTimetabledSchools(row: Row, sharedStrings: SharedStrings, tea
     var room = ""
     
     for rowCell in row.cells {
-        if rowCell.reference.column.value == "D" {
+        if rowCell.reference.column.value == "E" {
             divCode = rowCell.stringValue(sharedStrings) ?? ""
-        } else if rowCell.reference.column.value == "E" {
-            hours = rowCell.stringValue(sharedStrings) ?? ""
         } else if rowCell.reference.column.value == "F" {
+            hours = rowCell.stringValue(sharedStrings) ?? ""
+        } else if rowCell.reference.column.value == "G" {
             initials = rowCell.stringValue(sharedStrings) ?? ""
             initials = initials.trimmingCharacters(in: .whitespacesAndNewlines)
-        } else if rowCell.reference.column.value == "G" {
+        } else if rowCell.reference.column.value == "H" {
             room = rowCell.stringValue(sharedStrings) ?? ""
             room = room.trimmingCharacters(in: .whitespacesAndNewlines)
         }
@@ -175,7 +177,7 @@ func transformRowToTeacherRoom(row: Row, sharedStrings: SharedStrings) -> (teach
     var room: String = ""
     
     for rowCell in row.cells {
-        if rowCell.reference.column.value == "E" {
+        if rowCell.reference.column.value == "A" {
             teacher = rowCell.stringValue(sharedStrings) ?? ""
         } else if rowCell.reference.column.value == "F" {
             room = rowCell.stringValue(sharedStrings) ?? ""
@@ -199,8 +201,9 @@ func writeToFile(timetable: [TimetabledSchool], filepath: String) {
     }
 }
 
-let pathToSourceXLSX = "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/Divinity-Divisions-M23.xlsx"
-let outputFilename = "/Users/d.cormell/Desktop/DivinityTimetable2023.txt"
+let filename = "Econ_L25"
+let pathToSourceXLSX = "/Users/d.cormell/Documents/TimetableFormatConverter/TimetableFormatConverter/TimetableData/\(filename).xlsx"
+let outputFilename = "/Users/d.cormell/Desktop/\(filename).txt"
 
 guard let xlsx = XLSXFile(filepath: pathToSourceXLSX) else {
     fatalError("XLSX file is corrupted or does not exist")
@@ -217,14 +220,14 @@ for wbk in try xlsx.parseWorkbooks() {
       if let worksheetName = name {
           print("This worksheet has a name: \(worksheetName)")
           let worksheet = try xlsx.parseWorksheet(at: path)
-          if worksheetName == "MastersAndRooms" {
+          if worksheetName == "Rooms" {
               
               for row in worksheet.data?.rows ?? [] {
                   let teacherRoom = transformRowToTeacherRoom(row: row, sharedStrings: sharedStrings)
                   teachersToRooms[teacherRoom.teacher] = teacherRoom.room
               }
           }
-          else if worksheetName == "All Division Headings" {
+          else if worksheetName == "LessonData" {
               var timetabledSchools = [TimetabledSchool]()
               for row in worksheet.data?.rows ?? [] {
                   timetabledSchools.append(contentsOf: transformRowToTimetabledSchools(row: row, sharedStrings: sharedStrings, teachersToRooms: teachersToRooms))
